@@ -1,0 +1,316 @@
+{
+	"personal_info": {
+		"name": "Hasan",
+		"title": "Founder & Managing Director of H Studio | Event Planner | Event Media Director | Hospitality & Protocol Specialist",
+		"bio": "I am the founder of H studio; a company specialized in the design, planning and execution of large events, protocol management, content production, live broadcast and media operations.<br>My professional path began in my teenage years and from the heart of the media and broadcast space. After receiving specialized degrees in photography and videography in 2014, I entered the professional job market and from the very beginning I was active in advertising projects, branding and video content production.<br>While studying hotel management and protocol and earning the title of top student, my practical experience in the field of protocol, hospitality and event management developed. This combination led me to be at the intersection of media, hotel management, protocol and event management.<br>Continuing on the path, by managing and executing more than 500 projects and collaborating with more than 50 national and international brands and organizations, H Studio was formed as a company specialized in the fields of Event Operations, Media Production and Protocol Management."
+	},
+	"education": [
+		{
+			"degree": "Master's Degree",
+			"date": "In Progress - Expected Graduation: Jul 2027",
+			"university": "University of Applied Science and Technology",
+			"field": "Strategic Management",
+			"location": null
+		},
+		{
+			"degree": "Bachelor's Degree",
+			"date": "2022 - 2026",
+			"university": "University of Applied Science and Technology",
+			"field": "Hospitality Management & Protocol",
+			"location": null
+		}
+	],
+	"certifications": [
+		{
+			"name": "Photography Certification",
+			"institute": "Soroush",
+			"year": "................."
+		},
+		{
+			"name": "Videography Certification",
+			"institute": "Soroush",
+			"year": "................."
+		},
+		{
+			"name": "Drone Pilot Certification",
+			"institute": null,
+			"year": null
+		},
+		{
+			"name": "Drone Imaging Certification",
+			"institute": null,
+			"year": null
+		}
+	],
+	"skills": [
+		"Event Management",
+		"Event Planning",
+		"Event Operations",
+		"Event Logistics",
+		"VIP Management",
+		"Protocol Management",
+		"Hospitality Operations",
+		"Conference Management",
+		"Exhibition Management",
+		"Sports Event Management",
+		"Media Management",
+		"Media Strategy",
+		"Media Production",
+		"Content Planning",
+		"Creative Direction",
+		"Live Broadcasting",
+		"Livestream Operations",
+		"Event Coverage",
+		"Leadership",
+		"Team Management",
+		"Project Management",
+		"Vendor Coordination",
+		"Stakeholder Management",
+		"Budget Coordination",
+		"Client Relations",
+		"Technical Knowledge",
+		"Photography",
+		"Videography",
+		"Camera Operations",
+		"Drone Operations",
+		"Live Streaming Systems"
+	],
+	"experiences": [
+		{
+			"organization": "H Studio",
+			"logo": "./public/logos/h-studio.jpg",
+			"roles": [
+				{
+					"title": "Founder & Managing Director",
+					"date": "....... - Present",
+					"location": "Kish, Iran",
+					"description": [
+						"H Studio is a specialized event media and production company with a team size of 6 – 20 professionals, based in Kish Island.",
+						"The company focuses on: Conferences, Seminars, Exhibitions, Sports Events, Corporate Events, Live Broadcast Productions, Hospitality & Protocol Services.",
+						"Delivered 500+ projects to clients."
+					]
+				}
+			]
+		},
+		{
+			"organization": "Mica Mall Kish",
+			"logo": "./public/logos/mica-mall.jpg",
+			"roles": [
+				{
+					"title": "Protocol Manager",
+					"date": ".....",
+					"location": "Kish, Iran",
+					"description": [
+						"Managed VIP protocol operations, guest experience coordination, ceremonial planning, and executive hospitality services."
+					],
+					"media_placeholders": ["(عکس‌ها و ویدیوها)"]
+				}
+			]
+		},
+		{
+			"organization": "Darius Hotel",
+			"logo": "./public/logos/dariush.png",
+			"roles": [
+				{
+					"title": "Front Office & F&B",
+					"date": ".....",
+					"location": "Kish, Iran",
+					"description": [
+						"Worked in hospitality operations, guest services, and food & beverage coordination."
+					],
+					"media_placeholders": ["(عکس‌ها و ویدیوها)"]
+				}
+			]
+		},
+		{
+			"organization": "Kourosh Hotel",
+			"logo": "./public/logos/kourosh.png",
+			"roles": [
+				{
+					"title": "Front Office",
+					"date": ".....",
+					"location": "Kish, Iran",
+					"description": [
+						"Provided guest relations and hospitality services while developing operational knowledge of luxury hospitality environments."
+					],
+					"media_placeholders": ["(عکس‌ها و ویدیوها)"]
+				}
+			]
+		},
+		{
+			"organization": "Qeshm Hoteliers Association",
+			"logo": "./public/logos/qeshm-hoteliers.jpg",
+			"roles": [
+				{
+					"title": "Protocol Manager",
+					"date": ".....",
+					"location": "Qeshm, Iran",
+					"description": [
+						"Managed protocol and hospitality arrangements for official gatherings and industry events."
+					],
+					"media_placeholders": ["(عکس‌ها و ویدیوها)"]
+				}
+			]
+		}
+	],
+	"projects": [
+		{
+			"name": "Shoniz Flagship Advertising Campaign",
+			"image": "./public/portfolio/shoniz.jpg",
+			"position": "44%",
+			"role": "Executive Director & Project Director",
+			"description": "Directed and managed one of the flagship promotional campaigns of Shoniz, overseeing production planning, execution, and media operations.",
+			"media_placeholders": ["(عکس‌ها)", "(ویدیوها)"]
+		},
+		{
+			"name": "ECO Tourism Symposium",
+			"image": "./public/portfolio/symposium.jpg",
+			"position": "40%",
+			"role": "Project Director",
+			"description": "Directed and managed the Tourism Symposium of ECO Member Countries, coordinating media, operations, protocol, and event execution.",
+			"media_placeholders": ["(عکس‌ها)", "(ویدیوها)"]
+		},
+		{
+			"name": "78th World Men's Fitness & Bodybuilding Championships",
+			"image": "./public/portfolio/fitness.jpg",
+			"position": "52%",
+			"role": "Head of Media",
+			"description": "Led media coverage, content production, and event broadcasting operations for an international sports championship.",
+			"media_placeholders": ["(عکس‌ها)", "(ویدیوها)"]
+		},
+		{
+			"name": "Kish Marathon Series",
+			"image": "./public/portfolio/marathon.jpg",
+			"position": "31%",
+			"role": "Broadcast Director",
+			"description": "Managed livestream production, media operations, and broadcast direction for marathon, half-marathon, and mini-marathon events.",
+			"media_placeholders": ["(عکس‌ها)", "(ویدیوها)"]
+		},
+		{
+			"name": "AFC Related Projects",
+			"image": "./public/portfolio/afc.jpg",
+			"position": "38%",
+			"role": "Media Operations",
+			"description": "Participated in media coverage and event operations related to AFC activities and football events.",
+			"media_placeholders": ["(عکس‌ها)", "(ویدیوها)"]
+		},
+		{
+			"name": "Maritime Economy Conference",
+			"image": "./public/portfolio/maritime.jpg",
+			"position": "15%",
+			"role": "Media Director",
+			"description": "Managed media production and event coverage for a major conference focused on maritime economy development.",
+			"media_placeholders": ["(عکس‌ها)", "(ویدیوها)"]
+		},
+		{
+			"name": "Iran International Exhibitions",
+			"image": "",
+			"position": "5%",
+			"role": "Managed media production, event coverage, content creation, and live event operations across multiple national exhibitions and conferences.",
+			"description": "INOTEX, Petrochem, Petrochemical Exhibition, Steel Symposium, Food Industry Exhibition, Book Exhibition, Banking, Insurance & Stock Exchange Exhibition, Dental Congress 2024",
+			"media_placeholders": ["(عکس‌ها)", "(ویدیوها)"]
+		}
+	],
+	"clients": [
+		{ "name": "BluBank", "logo": "./public/logos/blubank.png" },
+		{ "name": "Mellat Bank", "logo": "./public/logos/mellat-bank.jpg" },
+		{ "name": "Saderat Bank", "logo": "./public/logos/saderat.jpg" },
+		{ "name": "Shahr Bank", "logo": "./public/logos/shahr-bank.jpg" },
+		{ "name": "Cinnagen", "logo": "./public/logos/cinnagen.jpg" },
+		{ "name": "Elite Daru", "logo": "./public/logos/elite-daru.jpg" },
+		{ "name": "Behestan Pakhsh", "logo": "./public/logos/blubank.png" },
+		{ "name": "Daya Darou", "logo": "./public/logos/blubank.png" },
+		{ "name": "Razi Distribution", "logo": "./public/logos/blubank.png" },
+		{ "name": "AFC", "logo": "./public/logos/blubank.png" },
+		{ "name": "Free Zone Organization", "logo": "./public/logos/blubank.png" },
+		{ "name": "Qeshm Hoteliers Association", "logo": "./public/logos/qeshm-hoteliers.jpg" },
+		{ "name": "Shoniz", "logo": "./public/logos/blubank.png" },
+		{ "name": "Asfalt Toos Qeshm", "logo": "./public/logos/blubank.png" },
+		{ "name": "Khwarizmi Co.", "logo": "./public/logos/blubank.png" }
+	],
+	"achievements": [
+		"Top Student in Hospitality Management",
+		"500+ Projects Delivered",
+		"50+ Major National Brands",
+		"Leadership of Teams Ranging from 6 to 20 Members",
+		"Over a Decade of Professional Experience in Events, Media, and Hospitality"
+	],
+	"journey": [
+		{
+			"title": "Introduction to Media and Broadcasting",
+			"content": [
+				"Due to my family's professional activities, I was introduced to the world of image production, broadcasting, and media projects from an early age."
+			],
+			"date": "2013"
+		},
+		{
+			"title": "Obtaining professional media certificates (2014)",
+			"content": ["Professional photography", "Professional videography"],
+			"date": "2014"
+		},
+		{
+			"title": "Entering the media job market",
+			"content": ["Advertising projects", "Hotel branding", "Content production"],
+			"date": "2016"
+		},
+		{
+			"title": "Studying in hospitality and ceremonies",
+			"content": [
+				"Top student in the field",
+				"Activities in the field of ceremonies and guest management"
+			],
+			"date": "2017"
+		},
+		{
+			"title": "Unique ceremonies (2019)",
+			"content": [
+				"Top member of the group",
+				"Activities in the field of ceremonies and performances"
+			],
+			"date": "2019"
+		},
+		{
+			"title": "Practical hospitality",
+			"content": ["Kourosh Hotel (Front Office)", "Dariush Hotel (Front Office / F&B)"],
+			"date": "2019"
+		},
+		{
+			"title": "Qeshm Hoteliers Association",
+			"content": ["Ceremony Manager", "Event management and implementation"],
+			"date": "2020"
+		},
+		{
+			"title": "Management roles in ceremonies, marketing and media",
+			"content": [
+				"Ceremony Manager and Public Relations Expert, MicaMall",
+				"MicaRad (Public Relations and Marketing Manager)",
+				"Gordoon Tourism Group (Media and Planning Manager)",
+				"New Age of Kish (Content Production Manager)"
+			],
+			"date": "2021"
+		},
+		{
+			"title": "Establishment of H Studio",
+			"content": ["Formation of a team of 6 to 20 people", "Entry into large event projects"],
+			"date": "2023"
+		},
+		{
+			"title": "Development of H Studio",
+			"content": ["More than 500 projects", "More than 50 national and international brands"],
+			"date": "2023"
+		},
+		{
+			"title": "National and international projects",
+			"content": [
+				"ECO Symposium",
+				"World Bodybuilding Championship",
+				"Kish Marathon Series",
+				"Mikamall Events",
+				"Shoniz Campaign",
+				"Exhibitions Portfolio",
+				"More than 50 national and international brands"
+			],
+			"date": "2023 - 2026"
+		}
+	]
+}

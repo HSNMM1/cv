@@ -1,4 +1,4 @@
-import { configReady } from './configure.js';
+import { loadConfig } from './configure.js';
 
 // Initialize controller
 var controller = new ScrollMagic.Controller();
@@ -60,11 +60,13 @@ function wateredDownFadeOutAnimation(section) {
 // Get the current year for the footer
 document.getElementById('current-year').textContent = new Date().getFullYear();
 
+const navLinks = document.querySelectorAll('.side-nav-link');
+
 // Active section highlighting for side navigation
 function highlightActiveSection() {
-	const sections = document.querySelectorAll('section[id]');
-	const navLinks = document.querySelectorAll('.side-nav-link');
-
+	const sections = document.querySelectorAll(
+		'section[id]:not(#journey), [data-scrollmagic-pin-spacer]',
+	);
 	let currentSection = '';
 	const scrollPosition = window.scrollY + 100; // Offset for navbar
 
@@ -83,9 +85,11 @@ function highlightActiveSection() {
 		sections.forEach((section) => {
 			const sectionTop = section.offsetTop;
 			const sectionHeight = section.offsetHeight;
-
 			if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-				currentSection = section.getAttribute('id');
+				currentSection =
+					section.getAttribute('data-scrollmagic-pin-spacer') == ''
+						? 'journey'
+						: section.getAttribute('id');
 			}
 		});
 	}
@@ -122,7 +126,7 @@ window.addEventListener(
 
 // Stagger animations for experience list items
 function initStaggerAnimations() {
-	const experienceItems = document.querySelectorAll('.resume-item');
+	const experienceItems = document.querySelectorAll('.resume-item, .journey-item');
 
 	const observer = new IntersectionObserver(
 		(entries) => {
@@ -149,11 +153,107 @@ function initStaggerAnimations() {
 	});
 }
 
-// Run after DOM is loaded and config.json is processed
-document.addEventListener('DOMContentLoaded', async () => {
+// Journey line animation
+// function animateJourneyLine() {
+// 	const path = document.querySelector('#journey-line-container path');
+// 	const lenPath = path.getTotalLength();
+
+// 	path.style.strokeDasharray = lenPath;
+// 	path.style.strokeDashoffset = lenPath;
+
+// 	const tween = TweenMax.to(path, 1, {
+// 		strokeDashoffset: 0,
+// 		ease: Linear.easeNone,
+// 	});
+
+// 	new ScrollMagic.Scene({
+// 		triggerElement: '#journey',
+// 		triggerHook: 0.5, // start: 'top top'
+// 		duration: '350%', // adjust to match your desired end point
+// 	})
+// 		.setTween(tween)
+// 		.addTo(controller);
+// }
+
+// Journey section cards animation
+function animateJourneyCards() {
+	const section = document.getElementById('journey');
+	const items = section.querySelectorAll('.journey-item');
+
+	// items[0].style.marginTop = '2%';
+	// const cs = getComputedStyle(items[items.length - 1]);
+	// console.log(
+	// 	document.getElementById('journey-list').offsetHeight,
+	// 	items[items.length - 1].firstElementChild.offsetHeight,
+	// );
+	// const height =
+	// 	document.getElementById('journey-list').offsetHeight -
+	// 	items[items.length - 1].firstElementChild.offsetHeight -
+	// 	30;
+	// const margin = height / items.length;
+
+	items.forEach((item, index) => {
+		if (index !== 0) {
+			// item.style.marginTop = `${index * margin + 30}px`;
+			item.style.marginTop = `${index * 5}px`;
+			gsap.set(item, { yPercent: 105 });
+		} else {
+			gsap.set(item, { yPercent: 60 });
+		}
+	});
+
+	const tl = gsap.timeline();
+
+	items.forEach((item, index) => {
+		tl.to(item, {
+			// scale: 0.9,
+			// borderRadius: '10px',
+			duration: 0,
+			ease: 'none',
+		});
+
+		tl.to(
+			items[index],
+			{
+				yPercent: 0,
+				duration: 1,
+				ease: 'none',
+			},
+			'<',
+		);
+
+		// tl.to(
+		// 	items[index],
+		// 	{
+		// 		scale: 0.95,
+		// 		duration: 0.2,
+		// 		ease: 'none',
+		// 	},
+		// 	'>',
+		// );
+	});
+
+	new ScrollMagic.Scene({
+		triggerElement: section,
+		triggerHook: 0,
+		duration: items.length * window.innerHeight,
+	})
+		.setPin(section)
+		.setTween(tl)
+		.addTo(controller);
+}
+
+async function renderConfig(lang) {
 	// Wait for config.js to populate the experience section
-	await configReady;
+	await loadConfig(lang);
 	initStaggerAnimations();
+	animateJourneyCards();
+	// animateJourneyLine();
+}
+
+// Run after DOM is loaded and initial config-en.json is processed
+document.addEventListener('DOMContentLoaded', async () => {
+	renderConfig('en');
 });
 
 // Obfuscated contact information - decode on page load
@@ -191,7 +291,10 @@ document.addEventListener('DOMContentLoaded', () => {
 				e.preventDefault();
 
 				const targetId = href.substring(1);
-				const targetSection = document.getElementById(targetId);
+				const targetSection =
+					targetId === 'journey'
+						? document.querySelector('div[data-scrollmagic-pin-spacer]')
+						: document.getElementById(targetId);
 
 				if (targetSection) {
 					const targetPosition = targetSection.offsetTop - navbarHeight;
@@ -204,4 +307,21 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		});
 	});
+});
+
+// Language switch
+document.addEventListener('DOMContentLoaded', () => {
+	document.querySelector('#language-toggle').onchange = (e) => {
+		if (e.currentTarget.checked) {
+			document.documentElement.lang = 'fa';
+			document.documentElement.dir = 'rtl';
+			document.getElementsByTagName('main')[0].dir = 'rtl';
+			renderConfig('fa');
+		} else {
+			document.documentElement.lang = 'en';
+			document.documentElement.dir = 'ltr';
+			document.getElementsByTagName('main')[0].dir = 'ltr';
+			renderConfig('en');
+		}
+	};
 });

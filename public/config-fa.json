@@ -1,0 +1,78 @@
+{
+	"header": {
+		"title": "Ramtin Nasr",
+		"email": "ramtin.nasr1383@gmail.com",
+		"website": "github.com/ramtinnasr"
+	},
+	"experience": [
+		{
+			"company": "TEDx Isfahan University of Technology",
+			"logo": "/public/logos/tedx.png",
+			"roles": [
+				{
+					"title": "عضو تیم مدیا",
+					"dateRange": "2025",
+					"location": "Iran",
+					"responsibilities": [
+						"Participated in organizing a TEDx-style event with around 80 attendees, focused on Gen Z engagement.",
+						"Contributed to media and promotional content production.",
+						"Assisted in visual communication and event branding activities.",
+						"Developed a habit tracker application for attendees to increase engagement and participation.",
+						"Developed a telegram bot for attendees to generate Instagram Story images based on the event template."
+					]
+				}
+			]
+		},
+		{
+			"company": "Freelancing",
+			"logo": "/public/icons/photoshop.svg",
+			"roles": [
+				{
+					"title": "Freelance Graphic Designer",
+					"dateRange": "2020 - Present",
+					"location": "Iran",
+					"responsibilities": [
+						"Completed 100+ graphic design projects for real clients.",
+						"Designed posters, social media content, advertising materials, and large-scale banners.",
+						"Produced visual content for both digital and print platforms."
+					]
+				}
+			]
+		}
+	],
+	"skills": [
+		{ "name": "JavaScript", "icon": "./public/icons/javascript.svg" },
+		{ "name": "React (Currently Learning)", "icon": "./public/icons/react.svg" },
+		{ "name": "HTML5", "icon": "./public/icons/html5.svg" },
+		{ "name": "CSS3", "icon": "./public/icons/css3.svg" },
+		{ "name": "Python", "icon": "./public/icons/python.svg" },
+		{ "name": "Django", "icon": "./public/icons/django.svg" },
+		{ "name": "SQLite", "icon": "./public/icons/sqlite.svg" },
+		{ "name": "Git", "icon": "./public/icons/git.svg" },
+		{ "name": "GitHub", "icon": "./public/icons/github.svg" },
+		{ "name": "REST APIs", "icon": "./public/icons/api.png" },
+		{ "name": "Adobe Photoshop (Advanced)", "icon": "./public/icons/photoshop.svg" },
+		{ "name": "Adobe Illustrator (Intermediate)", "icon": "./public/icons/illustrator.svg" }
+	],
+	"education": [
+		{
+			"degree": "B.S. Computer Engineering",
+			"date": "In Progress - Expected Graduation: Jul 2027",
+			"institution": "Islamic Azad University, Najafabad Branch",
+			"grade": "17.49/20",
+			"location": "Iran"
+		}
+	],
+	"certificates": [
+		{
+			"name": "CS50's Introduction to Computer Science",
+			"institution": "Harvard University",
+			"credential": "https://cs50.harvard.edu/certificates/d3ad7de8-7018-4c57-9ea7-c1ad4525a285.png"
+		},
+		{
+			"name": "CS50's Web Programming with Python and JavaScript",
+			"institution": "Harvard University",
+			"credential": "https://cs50.harvard.edu/certificates/27296ee3-e83e-4091-aab6-c2ea4d6633a2.png"
+		}
+	]
+}

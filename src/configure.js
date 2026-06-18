@@ -2,25 +2,25 @@
 //
 import { computeCompanyTenure, getInitials, roleDuration } from './experienceUtils.js';
 
-function buildCompanyLogo(group) {
+function buildCompanyLogo(experience) {
 	const logoWrap = document.createElement('div');
 	logoWrap.classList.add('company-logo');
 
-	if (group.logoBackground) {
-		logoWrap.style.backgroundColor = group.logoBackground;
+	if (experience.logoBackground) {
+		logoWrap.style.backgroundColor = experience.logoBackground;
 	}
 
-	if (group.logo) {
+	if (experience.logo) {
 		const img = document.createElement('img');
-		img.src = group.logo;
-		img.alt = `${group.company} logo`;
+		img.src = experience.logo;
+		img.alt = `${experience.organization} logo`;
 		img.loading = 'lazy';
 		img.addEventListener('error', () => {
 			logoWrap.innerHTML = '';
 			logoWrap.classList.add('company-logo-fallback');
 			const initials = document.createElement('span');
 			initials.classList.add('company-logo-initials');
-			initials.textContent = getInitials(group.company);
+			initials.textContent = getInitials(experience.organization);
 			logoWrap.appendChild(initials);
 		});
 		logoWrap.appendChild(img);
@@ -28,7 +28,7 @@ function buildCompanyLogo(group) {
 		logoWrap.classList.add('company-logo-fallback');
 		const initials = document.createElement('span');
 		initials.classList.add('company-logo-initials');
-		initials.textContent = getInitials(group.company);
+		initials.textContent = getInitials(experience.organization);
 		logoWrap.appendChild(initials);
 	}
 	return logoWrap;
@@ -55,7 +55,7 @@ function buildRoleItem(role) {
 	meta.classList.add('role-meta');
 	const date = document.createElement('span');
 	date.classList.add('role-date');
-	date.textContent = role.dateRange;
+	date.textContent = role.date;
 	meta.appendChild(date);
 
 	const duration = roleDuration(role);
@@ -84,12 +84,12 @@ function buildRoleItem(role) {
 	}
 	content.appendChild(meta);
 
-	if (role.responsibilities && role.responsibilities.length) {
+	if (role.description && role.description.length) {
 		const ul = document.createElement('ul');
 		ul.classList.add('responsibilities');
-		role.responsibilities.forEach((responsibility) => {
+		role.description.forEach((line) => {
 			const li = document.createElement('li');
-			li.innerHTML = responsibility;
+			li.innerHTML = line;
 			ul.appendChild(li);
 		});
 		content.appendChild(ul);
@@ -99,23 +99,23 @@ function buildRoleItem(role) {
 	return item;
 }
 
-function buildCompanyCard(group) {
+function buildCompanyCard(experience) {
 	const card = document.createElement('article');
 	card.classList.add('company-card', 'resume-item');
 
 	const header = document.createElement('header');
 	header.classList.add('company-header');
-	header.appendChild(buildCompanyLogo(group));
+	header.appendChild(buildCompanyLogo(experience));
 
 	const info = document.createElement('div');
 	info.classList.add('company-info');
 
 	const name = document.createElement('h3');
 	name.classList.add('company-name');
-	name.textContent = group.company;
+	name.textContent = experience.organization;
 	info.appendChild(name);
 
-	const tenure = computeCompanyTenure(group.roles || []);
+	const tenure = computeCompanyTenure(experience.roles || []);
 	if (tenure) {
 		const tenureEl = document.createElement('p');
 		tenureEl.classList.add('company-tenure');
@@ -128,10 +128,10 @@ function buildCompanyCard(group) {
 
 	const timeline = document.createElement('ol');
 	timeline.classList.add('role-timeline');
-	(group.roles || []).forEach((role) => {
+	(experience.roles || []).forEach((role) => {
 		timeline.appendChild(buildRoleItem(role));
 	});
-	if ((group.roles || []).length <= 1) {
+	if ((experience.roles || []).length <= 1) {
 		timeline.classList.add('role-timeline-single');
 	}
 	card.appendChild(timeline);
@@ -139,113 +139,281 @@ function buildCompanyCard(group) {
 	return card;
 }
 
-export const configReady = new Promise((resolve, reject) => {
-	document.addEventListener('DOMContentLoaded', async () => {
-		try {
-			await fetch('public/config.json')
-				.then((response) => response.json())
-				.then((data) => {
-					// Generate Experience Section (grouped by company)
-					const experienceSection = document.getElementById('experience-section');
-					experienceSection.innerHTML = '';
-					data.experience.forEach((group) => {
-						experienceSection.appendChild(buildCompanyCard(group));
-					});
+function buildPortfolioCard(project) {
+	const portfolioItem = document.createElement('div');
+	portfolioItem.classList.add('portfolio-item');
 
-					// Generate Skills Section
-					const skillsSection = document.getElementById('skills-section');
-					skillsSection.innerHTML = '';
+	const imageContainer = document.createElement('div');
+	imageContainer.classList.add('portfolio-image-container');
+	const img = document.createElement('img');
+	img.src = project.image;
+	img.alt = `${project.name} image`;
+	img.classList.add('portfolio-image');
+	img.style.objectPosition = `0 ${project.position}`;
+	imageContainer.appendChild(img);
 
-					data.skills.forEach((skill) => {
-						const skillItem = document.createElement('div');
-						skillItem.classList.add(
-							'resume-item',
-							'd-flex',
-							'gap-2',
-							'align-items-center',
-							'col-auto',
-						);
+	const description = document.createElement('div');
+	description.classList.add(
+		'portfolio-description',
+		'd-flex',
+		'flex-column',
+		'justify-content-between',
+		'align-items-start',
+	);
+	const header = document.createElement('div');
+	header.classList.add('portfolio-header', 'justify-content-between');
+	const detail = document.createElement('div');
+	detail.classList.add('d-flex', 'flex-column', 'gap-2', 'align-items-start');
 
-						const skillIcon = document.createElement('img');
-						skillIcon.classList.add('skill-icon', 'rounded-3');
-						skillIcon.width = '32';
-						skillIcon.height = '32';
-						skillIcon.src = `${skill.icon}`;
+	const name = document.createElement('h3');
+	name.classList.add('portfolio-title');
+	name.textContent = project.name;
+	const date = document.createElement('span');
+	date.classList.add('small');
+	date.textContent = project.date;
+	header.appendChild(name);
+	header.appendChild(date);
 
-						const skillName = document.createElement('h4');
-						skillName.classList.add('resume-header', 'm-0');
-						skillName.textContent = `${skill.name}`;
+	const role = document.createElement('span');
+	role.classList.add(
+		'border',
+		'border-1',
+		'rounded-pill',
+		'px-3',
+		'py-1',
+		'text-bg-light',
+		'fw-bold',
+	);
+	role.textContent = project.role;
+	const descriptionBody = document.createElement('p');
+	descriptionBody.classList.add('m-0');
+	descriptionBody.textContent = project.description;
+	detail.appendChild(role);
+	detail.appendChild(descriptionBody);
 
-						skillItem.appendChild(skillIcon);
-						skillItem.appendChild(skillName);
+	description.appendChild(header);
+	description.appendChild(detail);
 
-						skillsSection.appendChild(skillItem);
-					});
+	portfolioItem.appendChild(imageContainer);
+	portfolioItem.appendChild(description);
 
-					// Generate Education Section
-					const educationSection = document.getElementById('education-section');
-					educationSection.innerHTML = '';
-					data.education.forEach((item) => {
-						const educationItem = document.createElement('div');
-						educationItem.classList.add('resume-item');
+	return portfolioItem;
+}
 
-						const header = document.createElement('div');
-						header.classList.add(
-							'd-flex',
-							'flex-column',
-							'flex-sm-row',
-							'justify-content-between',
-							'align-items-start',
-							'align-items-sm-center',
-						);
-						const degree = document.createElement('h4');
-						degree.classList.add('resume-header');
-						degree.textContent = item.degree;
-						const date = document.createElement('p');
-						date.classList.add('date-range');
-						date.textContent = item.date;
-						header.appendChild(degree);
-						header.appendChild(date);
+export async function loadConfig(lang) {
+	if (document.readyState === 'loading') {
+		await new Promise((resolve) =>
+			document.addEventListener('DOMContentLoaded', resolve, { once: true }),
+		);
+	}
 
-						const institutionDetails = document.createElement('div');
-						institutionDetails.classList.add(
-							'd-flex',
-							'flex-column',
-							'flex-sm-row',
-							'justify-content-between',
-							'align-items-start',
-							'align-items-sm-center',
-						);
-						const institution = document.createElement('p');
-						institution.classList.add('company-details');
-						institution.textContent = item.institution;
-						const location = document.createElement('p');
-						location.classList.add('location');
-						location.textContent = item.location;
-						institutionDetails.appendChild(institution);
-						institutionDetails.appendChild(location);
+	const response = await fetch(`public/config-${lang}.json`);
+	const data = await response.json();
 
-						const grade = document.createElement('div');
-						grade.classList.add('d-flex', 'align-items-center', 'gap-1', 'fst-italic', 'small');
-						grade.textContent = 'GPA:';
-						const gradeValue = document.createElement('span');
-						gradeValue.textContent = item.grade;
-						grade.appendChild(gradeValue);
+	const bioSection = document.getElementById('bio-section');
+	bioSection.innerHTML = data.personal_info.bio;
 
-						educationItem.appendChild(header);
-						educationItem.appendChild(institutionDetails);
-						educationItem.appendChild(grade);
-
-						educationSection.appendChild(educationItem);
-					});
-					resolve();
-				})
-				.catch((err) => {
-					console.error('Error fetching config:', err);
-					reject(err);
-				});
-		} catch (err) {
-			reject(err);
-		}
+	const portfolioGrid = document.getElementById('portfolio-grid');
+	portfolioGrid.innerHTML = '';
+	data.projects.forEach((project) => {
+		portfolioGrid.appendChild(buildPortfolioCard(project));
 	});
-});
+
+	// Generate Skills Section
+	const skillsSection = document.getElementById('skills-section');
+	skillsSection.innerHTML = '';
+
+	data.skills.forEach((skill) => {
+		const skillItem = document.createElement('div');
+		skillItem.classList.add('resume-item', 'd-flex', 'gap-2', 'align-items-center', 'col-auto');
+
+		// const skillIcon = document.createElement('img');
+		// skillIcon.classList.add('skill-icon', 'rounded-3');
+		// skillIcon.width = '32';
+		// skillIcon.height = '32';
+		// skillIcon.src = `${skill.icon}`;
+
+		const skillName = document.createElement('h4');
+		skillName.classList.add(
+			'skill-header',
+			'border',
+			'border-1',
+			'rounded-pill',
+			'm-0',
+			'py-2',
+			'px-3',
+		);
+		skillName.textContent = `${skill}`;
+
+		// skillItem.appendChild(skillIcon);
+		skillItem.appendChild(skillName);
+
+		skillsSection.appendChild(skillItem);
+	});
+
+	// Generate Education Section
+	const educationSection = document.getElementById('education-section');
+	educationSection.innerHTML = '';
+	data.education.forEach((item) => {
+		const educationItem = document.createElement('div');
+		educationItem.classList.add('resume-item');
+
+		const header = document.createElement('div');
+		header.classList.add(
+			'd-flex',
+			'flex-column',
+			'flex-sm-row',
+			'justify-content-between',
+			'align-items-start',
+			'align-items-sm-center',
+		);
+		const degree = document.createElement('h4');
+		degree.classList.add('degree', 'fs-6', 'm-0');
+		degree.textContent = item.degree;
+		const date = document.createElement('p');
+		date.classList.add('date-range', 'm-0');
+		date.textContent = item.date;
+		header.appendChild(degree);
+		header.appendChild(date);
+
+		const field = document.createElement('div');
+		field.classList.add(
+			'resume-header',
+			'd-flex',
+			'justify-content-start',
+			'align-items-center',
+			'lh-1',
+			'mb-2',
+		);
+		field.textContent = item.field;
+
+		const institutionDetails = document.createElement('div');
+		institutionDetails.classList.add(
+			'd-flex',
+			'flex-column',
+			'flex-sm-row',
+			'justify-content-between',
+			'align-items-start',
+			'align-items-sm-center',
+		);
+		const institution = document.createElement('p');
+		institution.classList.add('company-details', 'mb-2');
+		institution.textContent = item.university;
+		const location = document.createElement('p');
+		location.classList.add('location');
+		location.textContent = item.location;
+		institutionDetails.appendChild(institution);
+		institutionDetails.appendChild(location);
+
+		const grade = document.createElement('div');
+		grade.classList.add('d-flex', 'align-items-center', 'gap-1', 'fst-italic', 'small');
+		grade.textContent = 'GPA:';
+		const gradeValue = document.createElement('span');
+		gradeValue.textContent = item.grade;
+		grade.appendChild(gradeValue);
+
+		educationItem.appendChild(header);
+		educationItem.appendChild(field);
+		educationItem.appendChild(institutionDetails);
+		educationItem.appendChild(grade);
+
+		educationSection.appendChild(educationItem);
+	});
+
+	// Generate Experience Section (grouped by company)
+	const experienceSection = document.getElementById('experience-section');
+	experienceSection.innerHTML = '';
+	data.experiences.forEach((experience) => {
+		experienceSection.appendChild(buildCompanyCard(experience));
+	});
+
+	// const journeySection = document.getElementById('journey');
+	// data.journey.forEach((item) => {
+	// 	const itemEl = document.createElement('div');
+	// 	itemEl.classList.add('journey-item');
+	// 	const container = document.createElement('div');
+	// 	container.classList.add('journey-container', 'py-3', 'px-4', 'border', 'border-1', 'rounded-4');
+
+	// 	const title = document.createElement('h4');
+	// 	title.classList.add('journey-title');
+	// 	title.textContent = item.title;
+	// 	container.appendChild(title);
+
+	// 	const list = document.createElement('ul');
+	// 	list.classList.add('journey-ul', 'responsibilities');
+	// 	item.content.forEach((line) => {
+	// 		const li = document.createElement('li');
+	// 		li.classList.add('journey-li');
+	// 		li.textContent = line;
+	// 		list.appendChild(li);
+	// 	});
+	// 	container.appendChild(list);
+
+	// 	itemEl.appendChild(container);
+
+	// 	journeySection.appendChild(itemEl);
+	// });
+
+	const journeySection = document.getElementById('journey-list');
+	data.journey.forEach((item) => {
+		const itemEl = document.createElement('div');
+		itemEl.classList.add('journey-item');
+		itemEl.role = 'listitem';
+		const container = document.createElement('div');
+		container.classList.add(
+			'journey-item-container',
+			'border',
+			'border-1',
+			'rounded-top-0',
+			'rounded-4',
+		);
+
+		const contentEl = document.createElement('div');
+		contentEl.classList.add(
+			'journey-content',
+			// 'py-3',
+			// 'px-4',
+			// 'border',
+			// 'border-1',
+			// 'rounded-4',
+		);
+
+		const title = document.createElement('h3');
+		title.classList.add('journey-title');
+		title.textContent = item.title;
+		contentEl.appendChild(title);
+
+		const desUl = document.createElement('ul');
+		desUl.classList.add('journey-ul', 'responsibilities', 'm-0');
+		item.content.forEach((line) => {
+			const li = document.createElement('li');
+			li.classList.add('journey-li');
+			li.textContent = line;
+			desUl.appendChild(li);
+		});
+		contentEl.appendChild(desUl);
+		container.appendChild(contentEl);
+
+		// const imgEl = document.createElement('img');
+		// imgEl.classList.add('journey-img');
+		// imgEl.height = '100px';
+		// imgEl.src = item.img;
+		// container.appendChild(imgEl);
+		const dateEl = document.createElement('span');
+		dateEl.classList.add('journey-date');
+		dateEl.textContent = item.date;
+		container.appendChild(dateEl);
+
+		itemEl.appendChild(container);
+		journeySection.appendChild(itemEl);
+	});
+
+	const clientsSlider = document.getElementById('clients-slider');
+	data.clients.forEach((client) => {
+		const clientSlide = document.createElement('div');
+		clientSlide.classList.add('slide');
+		clientSlide.innerHTML = `<img src="${client.logo}" height="150" width="150" alt="${client.name}" /><span class="client-name">${client.name}</span>`;
+		clientsSlider.appendChild(clientSlide);
+	});
+	clientsSlider.style.width = `${150 * data.clients.length}px`;
+}
