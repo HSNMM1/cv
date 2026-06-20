@@ -103,37 +103,7 @@
 					"description": [
 						"Managed VIP protocol operations, guest experience coordination, ceremonial planning, and executive hospitality services."
 					],
-					"media_placeholders": ["(عکس‌ها و ویدیوها)"]
-				}
-			]
-		},
-		{
-			"organization": "Darius Hotel",
-			"logo": "./public/logos/dariush.png",
-			"roles": [
-				{
-					"title": "Front Office & F&B",
-					"date": ".....",
-					"location": "Kish, Iran",
-					"description": [
-						"Worked in hospitality operations, guest services, and food & beverage coordination."
-					],
-					"media_placeholders": ["(عکس‌ها و ویدیوها)"]
-				}
-			]
-		},
-		{
-			"organization": "Kourosh Hotel",
-			"logo": "./public/logos/kourosh.png",
-			"roles": [
-				{
-					"title": "Front Office",
-					"date": ".....",
-					"location": "Kish, Iran",
-					"description": [
-						"Provided guest relations and hospitality services while developing operational knowledge of luxury hospitality environments."
-					],
-					"media_placeholders": ["(عکس‌ها و ویدیوها)"]
+					"media": ["./public/experiences/micarad.jpg"]
 				}
 			]
 		},
@@ -155,6 +125,7 @@
 	],
 	"projects": [
 		{
+			"id": 1,
 			"name": "Shoniz Flagship Advertising Campaign",
 			"image": "./public/portfolio/shoniz.jpg",
 			"position": "44%",
@@ -163,6 +134,7 @@
 			"media_placeholders": ["(عکس‌ها)", "(ویدیوها)"]
 		},
 		{
+			"id": 2,
 			"name": "ECO Tourism Symposium",
 			"image": "./public/portfolio/symposium.jpg",
 			"position": "40%",
@@ -171,6 +143,7 @@
 			"media_placeholders": ["(عکس‌ها)", "(ویدیوها)"]
 		},
 		{
+			"id": 3,
 			"name": "78th World Men's Fitness & Bodybuilding Championships",
 			"image": "./public/portfolio/fitness.jpg",
 			"position": "52%",
@@ -179,6 +152,7 @@
 			"media_placeholders": ["(عکس‌ها)", "(ویدیوها)"]
 		},
 		{
+			"id": 4,
 			"name": "Kish Marathon Series",
 			"image": "./public/portfolio/marathon.jpg",
 			"position": "31%",
@@ -187,6 +161,7 @@
 			"media_placeholders": ["(عکس‌ها)", "(ویدیوها)"]
 		},
 		{
+			"id": 5,
 			"name": "AFC Related Projects",
 			"image": "./public/portfolio/afc.jpg",
 			"position": "38%",
@@ -195,6 +170,7 @@
 			"media_placeholders": ["(عکس‌ها)", "(ویدیوها)"]
 		},
 		{
+			"id": 6,
 			"name": "Maritime Economy Conference",
 			"image": "./public/portfolio/maritime.jpg",
 			"position": "15%",
@@ -203,6 +179,7 @@
 			"media_placeholders": ["(عکس‌ها)", "(ویدیوها)"]
 		},
 		{
+			"id": 7,
 			"name": "Iran International Exhibitions",
 			"image": "",
 			"position": "5%",

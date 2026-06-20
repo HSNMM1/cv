@@ -76,6 +76,12 @@
             <a class="nav-link" href="#journey">Professional Journey</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="#resume">Resume</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#clients">Clients</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="#contact">Contact</a>
           </li>
         </ul>
@@ -90,142 +96,128 @@
       </div>
     </div>
   </nav>
+  <div id="main-view">
+    <header class="hero text-white text-start py-5 d-flex">
+      <video autoplay loop muted class="hero-bg">
+        <source src="./public/hero.mp4" type="video/mp4">
+      </video>
+      <div class="fluid-container glass px-3 pt-3 pb-4">
+        <h1 class="position-absolute fw-bold" id="hero-name">Hasan Mohammadi</h1>
+        <span class="hero-eyebrow">
+          <span class="pill">Front-End Developer</span>
+          Developer with a designer's eye
+        </span>
+        <h1>
+          Turning ideas into <span class="lush-mark">interactive experiences.</span>
+          <div class="ital">Code. Design. Create.</div>
+        </h1>
+        <p class="lead">
+          Founder & Managing Director of H Studio | Event Planner | Event Media Director | Hospitality & Protocol
+          Specialist
+        </p>
+      </div>
+    </header>
 
-  <header class="hero text-white text-start py-5 d-flex">
-    <video autoplay loop muted class="hero-bg">
-      <source src="./public/hero.mp4" type="video/mp4">
-    </video>
-    <div class="fluid-container glass px-3 pt-3 pb-4">
-      <h1 class="position-absolute fw-bold" id="hero-name">Hasan Mohammadi</h1>
-      <span class="hero-eyebrow">
-        <span class="pill">Front-End Developer</span>
-        Developer with a designer's eye
-      </span>
-      <h1>
-        Turning ideas into <span class="lush-mark">interactive experiences.</span>
-        <div class="ital">Code. Design. Create.</div>
-      </h1>
-      <p class="lead">
-        Founder & Managing Director of H Studio | Event Planner | Event Media Director | Hospitality & Protocol
-        Specialist
-      </p>
-    </div>
-  </header>
-
-  <div class="container-fluid">
-    <div class="row" dir="ltr">
-      <aside class="col-lg-2 bg-light pt-4 d-none d-lg-block side-nav-sticky rounded-end-4 mt-3">
-        <ul class="nav flex-column side-nav h-100 justify-content-center gap-4">
-          <li class="nav-item">
-            <a class="nav-link side-nav-link" href="#bio" data-section="bio">
-              Bio
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link side-nav-link" href="#portfolio" data-section="portfolio">
-              Portfolio
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link side-nav-link" href="#journey" data-section="journey">
-              Professional Journey
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link side-nav-link" href="#contact" data-section="contact">
-              Contact
-            </a>
-          </li>
-        </ul>
-      </aside>
-      <main class="col-lg-10 pt-4 mx-auto">
-        <section id="bio" class="pt-4 py-5">
-          <h2 class="text-center mb-5">Bio</h2>
-          <div class="row d-flex align-items-center mx-0 ps-md-3">
-            <div class="col-md-3">
-              <img src="./public/ramtin_profile.jpg" alt="Photo of Ramtin Nasr."
-                class="img-fluid rounded-circle mb-3 bio-image" />
-            </div>
-            <div class="col-md-9 ps-3">
-              <p id="bio-section"></p>
-            </div>
-          </div>
-          <span id="bio-end"></span>
-        </section>
-
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="py-5">
-          <h2 class="text-center mb-5">Portfolio</h2>
-          <div id="portfolio-grid">
-            <div class="portfolio-item" onclick="openPortfolioItem('https://github.com/rt-one', 'MyShare')">
-              <div class="portfolio-image-container">
-                <img src="./public/portfolio/test.jpg" alt="MyShare Webb-App screenshot" class="portfolio-image" />
+    <div class="container-fluid">
+      <div class="row" dir="ltr">
+        <aside class="col-lg-2 bg-light pt-4 d-none d-lg-block side-nav-sticky rounded-end-4 mt-3">
+          <ul class="nav flex-column side-nav h-100 justify-content-center gap-4">
+            <li class="nav-item">
+              <a class="nav-link side-nav-link" href="#bio" data-section="bio">
+                Bio
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link side-nav-link" href="#portfolio" data-section="portfolio">
+                Portfolio
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link side-nav-link" href="#journey" data-section="journey">
+                Professional Journey
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link side-nav-link" href="#resume" data-section="resume">
+                Resume
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link side-nav-link" href="#clients" data-section="clients">
+                Clients
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link side-nav-link" href="#contact" data-section="contact">
+                Contact
+              </a>
+            </li>
+          </ul>
+        </aside>
+        <main class="col-lg-10 pt-4 mx-auto">
+          <section id="bio" class="pt-4 py-5">
+            <h2 class="text-center mb-5">Bio</h2>
+            <div class="row d-flex align-items-center mx-0 ps-md-3">
+              <div class="col-md-3">
+                <img src="./public/ramtin_profile.jpg" alt="Photo of Ramtin Nasr."
+                  class="img-fluid rounded-circle mb-3 bio-image" />
               </div>
-              <div class="portfolio-description d-flex flex-column justify-content-between align-items-start">
-                <div class="portfolio-header">
-                  <h3 class="fs-1">MyShare</h3>
-                </div>
-                • Developed a web application for managing and settling group travel expenses.<br>
-                • Implemented expense tracking and debt calculation between users.<br>
-                • Generated downloadable reports in PDF format.<br>
-                • Designed and developed both frontend and backend components.
+              <div class="col-md-9 ps-3">
+                <p id="bio-section"></p>
               </div>
             </div>
+            <span id="bio-end"></span>
+          </section>
 
-            <div class="portfolio-item" onclick="openPortfolioItem('#', 'Graphic Design Projects')">
-              <div class="portfolio-header">
-                <h4>Graphic Design Projects</h4>
-              </div>
-              <!-- <div class="portfolio-image-container">
-                <img src="#" alt="Graphic design projects screenshot" class="portfolio-image" />
-              </div> -->
-              <div class="portfolio-description">
-                100+ graphic design projects for clients. Designed posters, social media content, advertising materials,
-                and large-scale banners.
+          <!-- Portfolio Section -->
+          <section id="portfolio" class="py-5">
+            <h2 class="text-center mb-5">Portfolio</h2>
+            <div id="portfolio-grid"></div>
+            <span id="portfolio-end"></span>
+          </section>
+
+          <section id="journey" class="d-flex flex-column gap-4">
+            <h2 id="journey-section-title" class="fw-bold">My Journey</h2>
+            <div class="wrapper">
+              <div id="journey-list" role="list">
               </div>
             </div>
-
-          </div>
-          <span id="portfolio-end"></span>
-        </section>
-
-        <section id="journey" class="d-flex flex-column gap-4">
-          <h2 id="journey-section-title" class="fw-bold">My Journey</h2>
-          <div class="wrapper">
-            <div id="journey-list" role="list">
-            </div>
-          </div>
-          <!-- <div id="journey-line-container" class="position-absolute top-0 start-0 w-100 h-100">
+            <!-- <div id="journey-line-container" class="position-absolute top-0 start-0 w-100 h-100">
             <svg width="100%" height="100%" viewBox="0 0 662 2823" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M200.375 3.58154C141.875 48.0815 50.2745 154.482 151.875 224.082C278.875 311.082 580.875 332.582 636.375 239.082C691.875 145.582 592.875 92.0815 553.375 125.582C513.875 159.082 488.375 256.582 494.375 483.082C500.375 709.582 334.375 715.582 230.375 715.582C126.375 715.582 46.8745 748.582 13.3745 825.582C-20.1255 902.582 44.8745 1022.08 147.375 1056.58C249.875 1091.08 325.375 1038.08 414.375 1011.08C503.375 984.082 558.875 1004.08 590.875 1056.58C622.875 1109.08 637.875 1159.08 630.375 1444.08C622.875 1729.08 222.875 1479.08 120.375 1421.58C17.8745 1364.08 109.375 1188.08 246.875 1316.08C384.375 1444.08 253.375 1637.58 200.375 1750.58C147.375 1863.58 99.3745 2030.58 177.875 2166.58C256.375 2302.58 379.066 2321.76 501.875 2366.08C613.858 2406.5 658.043 2449.78 657.375 2574.08C656.683 2702.64 557.875 2719.08 455.375 2726.58C352.875 2734.08 248.875 2754.08 194.375 2820.08"
                 stroke="white" stroke-width="5" />
             </svg>
           </div> -->
-        </section>
+          </section>
 
-        <section id="clients" class="pt-5 pb-0">
-          <p class="lead section-title">Clients</p>
-          <div class="slider">
-            <div id="clients-slider" class="slide-track">
-            </div>
-          </div>
-        </section>
+          <section id="resume" class="pt-5 pb-0">
+            <!-- H Studio Profile Section -->
+            <p class="lead section-title">H Studio</p>
+            <div id="experiences-section" class="resume-section"></div>
+            <!-- Skills Section -->
+            <p class="lead section-title">Skills</p>
+            <div id="skills-section" class="resume-section row gx-4"></div>
+            <!-- Education Section -->
+            <p class="lead section-title">Education</p>
+            <div id="education-section" class="resume-section"></div>
+            <span id="resume-end"></span>
+          </section>
 
-        <section id="resume" class="pt-5 pb-0">
-          <!-- Skills Section -->
-          <p class="lead section-title">Skills</p>
-          <div id="skills-section" class="resume-section row gx-4"></div>
-          <!-- Education Section -->
-          <p class="lead section-title">Education</p>
-          <div id="education-section" class="resume-section"></div>
-          <!-- Experience Profile Section -->
-          <p class="lead section-title">Experience</p>
-          <div id="experience-section" class="resume-section"></div>
-          <span id="resume-end"></span>
-        </section>
-      </main>
+          <section id="clients" class="pt-5 pb-0">
+            <p class="lead section-title">Clients</p>
+            <div id="clients-slider" class="w-100 overflow-hidden d-flex flex-column position-relative gap-3"></div>
+          </section>
+        </main>
+      </div>
     </div>
+  </div>
+
+  <div id="detail-view" class="d-none w-100">
+    <!-- detail content -->
+    <button id="close-detail" class="btn-close">Close Project</button>
+    <h2 id="detail-title"></h2>
+    <p id="detail-description"></p>
   </div>
 
   <section id="contact" class="py-5">

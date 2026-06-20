@@ -96,6 +96,32 @@ function buildRoleItem(role) {
 	}
 
 	item.appendChild(content);
+
+	if (role.media) {
+		const media = document.createElement('div');
+		media.classList.add('role-media');
+		media.innerHTML = `
+		<div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+			<div class="carousel-inner">
+				${role.media.map(
+					(mediaUrl, index) => `
+				<div class="carousel-item${index === 0 ? ' active' : ''}">
+					<img src="${mediaUrl}" class="d-block w-100" alt="${role.name} Media">
+				</div>`,
+				)}
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>`;
+		item.appendChild(media);
+	}
+
 	return item;
 }
 
@@ -139,9 +165,55 @@ function buildCompanyCard(experience) {
 	return card;
 }
 
+function slugify(str) {
+	return str
+		.toLowerCase()
+		.trim()
+		.replace(/[^\w\s-]/g, '')
+		.replace(/[\s_-]+/g, '-')
+		.replace(/^-+|-+$/g, '');
+}
+
+function showMainView() {
+	document.getElementById('main-view').classList.remove('d-none');
+	document.getElementById('detail-view').classList.add('d-none');
+}
+
+function showDetailView(project) {
+	document.getElementById('main-view').classList.add('d-none');
+	document.getElementById('detail-view').classList.remove('d-none');
+
+	renderDetail(project);
+}
+
+// window.addEventListener('popstate', (event) => {
+// 	const state = event.state;
+
+// 	if (!state) {
+// 		showMainView();
+// 		return;
+// 	}
+
+// 	if (state.page === 'detail') {
+// 		showDetailView(state.itemId);
+// 	}
+// });
+
+function renderDetail(project) {
+	document.getElementById('detail-title').textContent = project.name;
+	document.getElementById('detail-description').textContent = project.description;
+	document.getElementById('close-detail').addEventListener('click', () => {
+		showMainView();
+		document
+			.querySelector(`.portfolio-item[data-project-id="${project.id}"]`)
+			.scrollIntoView({ behavior: 'instant', block: 'center' });
+	});
+}
+
 function buildPortfolioCard(project) {
 	const portfolioItem = document.createElement('div');
 	portfolioItem.classList.add('portfolio-item');
+	portfolioItem.setAttribute('data-project-id', project.id);
 
 	const imageContainer = document.createElement('div');
 	imageContainer.classList.add('portfolio-image-container');
@@ -197,7 +269,41 @@ function buildPortfolioCard(project) {
 	portfolioItem.appendChild(imageContainer);
 	portfolioItem.appendChild(description);
 
+	portfolioItem.onclick = (e) => {
+		const itemId = project.id;
+
+		history.pushState(
+			{
+				page: 'project-detail',
+				itemId,
+			},
+			'',
+			`#project-${slugify(project.name)}`,
+		);
+
+		showDetailView(project);
+		window.scrollTo({
+			top: window.top,
+			behavior: 'smooth',
+		});
+	};
+
 	return portfolioItem;
+}
+
+function buildClientsSlider(clients, containerWidth) {
+	const minWidth = containerWidth / clients.length;
+	const clientsSlider = document.createElement('div');
+	clientsSlider.classList.add('slide-track');
+	clients.forEach((client) => {
+		const clientSlide = document.createElement('div');
+		clientSlide.classList.add('slide');
+		clientSlide.innerHTML = `<img src="${client.logo}" height="150" width="150" alt="${client.name}" /><span class="client-name">${client.name}</span>`;
+		clientSlide.style.minWidth = `${minWidth}px`;
+		clientsSlider.appendChild(clientSlide);
+	});
+	clientsSlider.append(...Array.from(clientsSlider.children).map((node) => node.cloneNode(true)));
+	return clientsSlider;
 }
 
 export async function loadConfig(lang) {
@@ -218,6 +324,7 @@ export async function loadConfig(lang) {
 	data.projects.forEach((project) => {
 		portfolioGrid.appendChild(buildPortfolioCard(project));
 	});
+	window.projects = data.projects;
 
 	// Generate Skills Section
 	const skillsSection = document.getElementById('skills-section');
@@ -321,10 +428,10 @@ export async function loadConfig(lang) {
 	});
 
 	// Generate Experience Section (grouped by company)
-	const experienceSection = document.getElementById('experience-section');
-	experienceSection.innerHTML = '';
+	const experiencesSection = document.getElementById('experiences-section');
+	experiencesSection.innerHTML = '';
 	data.experiences.forEach((experience) => {
-		experienceSection.appendChild(buildCompanyCard(experience));
+		experiencesSection.appendChild(buildCompanyCard(experience));
 	});
 
 	// const journeySection = document.getElementById('journey');
@@ -409,11 +516,12 @@ export async function loadConfig(lang) {
 	});
 
 	const clientsSlider = document.getElementById('clients-slider');
-	data.clients.forEach((client) => {
-		const clientSlide = document.createElement('div');
-		clientSlide.classList.add('slide');
-		clientSlide.innerHTML = `<img src="${client.logo}" height="150" width="150" alt="${client.name}" /><span class="client-name">${client.name}</span>`;
-		clientsSlider.appendChild(clientSlide);
-	});
-	clientsSlider.style.width = `${150 * data.clients.length}px`;
+	const clientsSliderWidth = clientsSlider.offsetWidth;
+	for (let i = 0; i < Math.ceil(data.clients.length / 10); i++) {
+		const start = i * 10;
+		clientsSlider.appendChild(
+			buildClientsSlider(data.clients.slice(start, start + 10), clientsSliderWidth),
+		);
+	}
+	// clientsSlider.style.width = `${150 * data.clients.length}px`;
 }

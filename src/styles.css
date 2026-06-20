@@ -427,6 +427,8 @@ body {
 }
 
 .role-item {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
 	position: relative;
 	padding-bottom: 1.25rem;
 }
@@ -1603,24 +1605,16 @@ input.check-toggle-round-flat:checked + label:after {
 	margin-right: 20px;
 }
 
-@keyframes scroll {
+@keyframes clients-scroll {
 	0% {
 		transform: translateX(0);
 	}
 	100% {
-		transform: translateX(calc(-150px * 7));
+		transform: translateX(-50%);
 	}
 }
 
-.slider {
-	background: white;
-	/* box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125); */
-	/* height: 100px; */
-	margin: auto;
-	overflow: hidden;
-	position: relative;
-	width: 100%;
-
+#clients-slider {
 	&::before,
 	&::after {
 		background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
@@ -1643,9 +1637,16 @@ input.check-toggle-round-flat:checked + label:after {
 	}
 
 	.slide-track {
-		animation: scroll 40s linear infinite;
+		width: max-content;
 		display: flex;
-		gap: 0.7rem;
+		gap: 1rem;
+	}
+
+	.slide-track:nth-child(odd) {
+		animation: clients-scroll 28s linear infinite;
+	}
+	.slide-track:nth-child(even) {
+		animation: clients-scroll 28s linear infinite reverse;
 	}
 
 	.slide {
@@ -1654,7 +1655,7 @@ input.check-toggle-round-flat:checked + label:after {
 		align-items: center;
 		justify-content: flex-start;
 		gap: 0.3rem;
-		width: 250px;
+		width: 150px;
 	}
 
 	.client-name {
