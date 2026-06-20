@@ -325,3 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	};
 });
+
+if (window.location.hash.length > 0) {
+	history.pushState({}, '', '/');
+}

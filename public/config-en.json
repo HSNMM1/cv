@@ -131,7 +131,7 @@
 			"position": "44%",
 			"role": "Executive Director & Project Director",
 			"description": "Directed and managed one of the flagship promotional campaigns of Shoniz, overseeing production planning, execution, and media operations.",
-			"media_placeholders": ["(عکس‌ها)", "(ویدیوها)"]
+			"media": ["(عکس‌ها)", "(ویدیوها)"]
 		},
 		{
 			"id": 2,
@@ -140,7 +140,7 @@
 			"position": "40%",
 			"role": "Project Director",
 			"description": "Directed and managed the Tourism Symposium of ECO Member Countries, coordinating media, operations, protocol, and event execution.",
-			"media_placeholders": ["(عکس‌ها)", "(ویدیوها)"]
+			"media": ["./public/portfolio/2/12.jpg", "./public/portfolio/2/7.jpg"]
 		},
 		{
 			"id": 3,
@@ -149,7 +149,7 @@
 			"position": "52%",
 			"role": "Head of Media",
 			"description": "Led media coverage, content production, and event broadcasting operations for an international sports championship.",
-			"media_placeholders": ["(عکس‌ها)", "(ویدیوها)"]
+			"media": ["(عکس‌ها)", "(ویدیوها)"]
 		},
 		{
 			"id": 4,
@@ -158,7 +158,7 @@
 			"position": "31%",
 			"role": "Broadcast Director",
 			"description": "Managed livestream production, media operations, and broadcast direction for marathon, half-marathon, and mini-marathon events.",
-			"media_placeholders": ["(عکس‌ها)", "(ویدیوها)"]
+			"media": ["(عکس‌ها)", "(ویدیوها)"]
 		},
 		{
 			"id": 5,
@@ -167,7 +167,7 @@
 			"position": "38%",
 			"role": "Media Operations",
 			"description": "Participated in media coverage and event operations related to AFC activities and football events.",
-			"media_placeholders": ["(عکس‌ها)", "(ویدیوها)"]
+			"media": ["(عکس‌ها)", "(ویدیوها)"]
 		},
 		{
 			"id": 6,
@@ -176,7 +176,7 @@
 			"position": "15%",
 			"role": "Media Director",
 			"description": "Managed media production and event coverage for a major conference focused on maritime economy development.",
-			"media_placeholders": ["(عکس‌ها)", "(ویدیوها)"]
+			"media": ["(عکس‌ها)", "(ویدیوها)"]
 		},
 		{
 			"id": 7,
@@ -185,7 +185,7 @@
 			"position": "5%",
 			"role": "Managed media production, event coverage, content creation, and live event operations across multiple national exhibitions and conferences.",
 			"description": "INOTEX, Petrochem, Petrochemical Exhibition, Steel Symposium, Food Industry Exhibition, Book Exhibition, Banking, Insurance & Stock Exchange Exhibition, Dental Congress 2024",
-			"media_placeholders": ["(عکس‌ها)", "(ویدیوها)"]
+			"media": ["(عکس‌ها)", "(ویدیوها)"]
 		}
 	],
 	"clients": [

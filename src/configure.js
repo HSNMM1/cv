@@ -186,20 +186,31 @@ function showDetailView(project) {
 	renderDetail(project);
 }
 
-// window.addEventListener('popstate', (event) => {
-// 	const state = event.state;
+window.addEventListener('popstate', (event) => {
+	const state = event.state;
+	if (!state?.page) {
+		showMainView();
+		return;
+	} else {
+		history.pushState({}, '', '/');
+	}
 
-// 	if (!state) {
-// 		showMainView();
-// 		return;
-// 	}
-
-// 	if (state.page === 'detail') {
-// 		showDetailView(state.itemId);
-// 	}
-// });
+	// if (state.page === 'detail') {
+	// 	showDetailView(state.itemId);
+	// }
+});
 
 function renderDetail(project) {
+	const mediaContainer = document.querySelector('#project-carousel > .carousel-inner');
+	project.media.forEach((url, index) => {
+		const el = document.createElement('div');
+		el.classList.add('carousel-item');
+		if (index === 0) el.classList.add('active');
+
+		el.innerHTML = `<img src="${url}" class="d-block w-100" alt="${project.name} Media">`;
+		mediaContainer.appendChild(el);
+	});
+
 	document.getElementById('detail-title').textContent = project.name;
 	document.getElementById('detail-description').textContent = project.description;
 	document.getElementById('close-detail').addEventListener('click', () => {
@@ -207,6 +218,7 @@ function renderDetail(project) {
 		document
 			.querySelector(`.portfolio-item[data-project-id="${project.id}"]`)
 			.scrollIntoView({ behavior: 'instant', block: 'center' });
+		history.pushState({}, '', '/');
 	});
 }
 
