@@ -137,7 +137,7 @@ function initStaggerAnimations() {
 					// Stagger the list items within this experience item
 					const listItems = entry.target.querySelectorAll('.responsibilities li');
 					listItems.forEach((item, index) => {
-						item.style.animationDelay = `${0.1 * index}s`;
+						item.style.animationDelay = `${0.2 * index}s`;
 						item.classList.add('stagger-in');
 					});
 
@@ -198,7 +198,7 @@ function animateJourneyCards() {
 			item.style.marginTop = `${index * 5}px`;
 			gsap.set(item, { yPercent: 105 });
 		} else {
-			gsap.set(item, { yPercent: 60 });
+			gsap.set(item, { yPercent: 50 });
 		}
 	});
 

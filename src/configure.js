@@ -1,6 +1,7 @@
 // Description: This file contains the configuration for the resume page.
 //
 import { computeCompanyTenure, getInitials, roleDuration } from './experienceUtils.js';
+import { marked } from './marked.esm.js';
 
 function buildCompanyLogo(experience) {
 	const logoWrap = document.createElement('div');
@@ -106,7 +107,7 @@ function buildRoleItem(role) {
 				${role.media.map(
 					(mediaUrl, index) => `
 				<div class="carousel-item${index === 0 ? ' active' : ''}">
-					<img src="${mediaUrl}" class="d-block w-100" alt="${role.name} Media">
+					<img src="${mediaUrl}" loading="lazy" class="d-block w-100" alt="${role.name} Media">
 				</div>`,
 				)}
 			</div>
@@ -207,12 +208,16 @@ function renderDetail(project) {
 		el.classList.add('carousel-item');
 		if (index === 0) el.classList.add('active');
 
-		el.innerHTML = `<img src="${url}" class="d-block w-100" alt="${project.name} Media">`;
+		el.innerHTML = `<img src="${url}" class="d-block w-100" loading="lazy" alt="${project.name} Media">`;
 		mediaContainer.appendChild(el);
 	});
 
 	document.getElementById('detail-title').textContent = project.name;
-	document.getElementById('detail-description').textContent = project.description;
+	document.getElementById('detail-year').textContent = project.year;
+	document.getElementById('detail-location').textContent = project.location;
+	document.getElementById('detail-client').textContent = project.client;
+	document.getElementById('detail-role').textContent = project.role;
+	document.getElementById('detail-content').innerHTML = marked(project.detail);
 	document.getElementById('close-detail').addEventListener('click', () => {
 		showMainView();
 		document
@@ -233,6 +238,7 @@ function buildPortfolioCard(project) {
 	img.src = project.image;
 	img.alt = `${project.name} image`;
 	img.classList.add('portfolio-image');
+	img.loading = 'lazy';
 	img.style.objectPosition = `0 ${project.position}`;
 	imageContainer.appendChild(img);
 
@@ -310,7 +316,7 @@ function buildClientsSlider(clients, containerWidth) {
 	clients.forEach((client) => {
 		const clientSlide = document.createElement('div');
 		clientSlide.classList.add('slide');
-		clientSlide.innerHTML = `<img src="${client.logo}" height="150" width="150" alt="${client.name}" /><span class="client-name">${client.name}</span>`;
+		clientSlide.innerHTML = `<img src="${client.logo}" height="150" width="150" loading="lazy" alt="${client.name}" /><span class="client-name">${client.name}</span>`;
 		clientSlide.style.minWidth = `${minWidth}px`;
 		clientsSlider.appendChild(clientSlide);
 	});

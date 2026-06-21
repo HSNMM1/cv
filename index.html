@@ -99,7 +99,7 @@
   <div id="main-view">
     <header class="hero text-white text-start py-5 d-flex">
       <video autoplay loop muted class="hero-bg">
-        <source src="./public/hero.mp4" type="video/mp4">
+        <source src="./public/hero.webm" type="video/webm">
       </video>
       <div class="fluid-container glass px-3 pt-3 pb-4">
         <h1 class="position-absolute fw-bold" id="hero-name">Hasan Mohammadi</h1>
@@ -157,12 +157,12 @@
         <main class="col-lg-10 pt-4 mx-auto">
           <section id="bio" class="pt-4 py-5">
             <h2 class="text-center mb-5">Bio</h2>
-            <div class="row d-flex align-items-center mx-0 ps-md-3">
-              <div class="col-md-3">
-                <img src="./public/ramtin_profile.jpg" alt="Photo of Ramtin Nasr."
-                  class="img-fluid rounded-circle mb-3 bio-image" />
+            <div class="row d-flex align-items-center mx-0 px-md-4">
+              <div class="col-md-4 col-lg-3">
+                <img src="./public/hasan-profile.jpg" alt="Photo of Ramtin Nasr."
+                  class="img-fluid rounded-5 mb-3 bio-image" />
               </div>
-              <div class="col-md-9 ps-3">
+              <div class="col-md-8 col-lg-9 ps-3">
                 <p id="bio-section"></p>
               </div>
             </div>
@@ -213,22 +213,39 @@
     </div>
   </div>
 
-  <div id="detail-view" class="d-none px-4 py-2 m-4 border border-1 rounded-4">
+  <div id="detail-view" class="d-none px-4 py-3 m-4 border border-1 rounded-4">
     <!-- detail content -->
-    <div id="project-carousel" class="carousel slide" data-bs-ride="true">
-      <div class="carousel-inner"></div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#project-carousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#project-carousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+    <button id="close-detail" type="button" class="btn btn-dark rounded-pill d-flex align-items-center gap-1"><svg
+        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-short"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5" />
+      </svg>
+      BACK
+    </button>
+
+    <div id="detail-header">
+      <div id="detail-info" class="d-flex flex-column align-items-start gap-1 fs-5">
+        <h2 id="detail-title" class="px-3 py-2 rounded-4 fw-bold mb-4"></h2>
+        <p><strong>Year:</strong> <span id="detail-year"></span></p>
+        <p><strong>Location:</strong> <span id="detail-location"></span></p>
+        <p><strong>Client:</strong> <span id="detail-client"></span></p>
+        <p><strong>Role:</strong> <span id="detail-role"></span></p>
+      </div>
+
+      <div id="project-carousel" class="carousel slide" data-bs-ride="true">
+        <div class="carousel-inner rounded-4"></div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#project-carousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#project-carousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </div>
-    <button id="close-detail" class="btn-close">Close Project</button>
-    <h2 id="detail-title" class="px-3 py-2 rounded-4 fw-bold"></h2>
-    <p id="detail-description"></p>
+    <div id="detail-content" class="border border-2 rounded-4 px-4 py-3"></div>
   </div>
 
   <section id="contact" class="py-5">
