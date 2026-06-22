@@ -608,9 +608,6 @@ ul li {
 	.hero h1 {
 		font-size: 1.8rem;
 	}
-	.hero .hero-bg {
-		inset: 0 -500px !important;
-	}
 }
 
 /* Bio section image adjustment */
